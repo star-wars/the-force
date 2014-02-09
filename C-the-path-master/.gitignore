@@ -1,0 +1,38 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+ctp
+CTestTestfile.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+DartConfiguration.tcl
+Testing/*
+*Source.tar.Z
+*Source.tar.bz2
+*Source.tar.gz
+_CPack_Packages/*
+.cproject
+.project
+.settings/*
+*-Linux.sh
+*-Linux.tar.Z
+*-Linux.tar.gz
+doc/*
+Doxyfile
+Dependencies/Testing/*

@@ -1,0 +1,13 @@
+rm -rf CMakeFiles
+rm -rf Testing
+rm -rf doc
+rm CMakeCache.txt
+rm CPackConfig.cmake
+rm CPackSourceConfig.cmake
+rm CTestTestfile.cmake
+rm ctp
+rm DartConfiguration.tcl
+rm cmake_install.cmake
+rm .cproject
+rm .project
+rm Makefile
