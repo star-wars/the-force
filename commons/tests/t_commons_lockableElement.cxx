@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include "zeter_tests.h"
+#include "commons_tests.h"
 #include <atomic>
 #include <thread>
 #include <chrono>
@@ -28,7 +28,7 @@ void LockSth(int count, LockableElement* elemenet) {
 	}
 }
 
-TEST(test_zeter_lockableElement) {
+TEST(test_commons_lockableElement) {
 
 	int lockCount = 300000;
 
@@ -56,7 +56,7 @@ TEST(test_zeter_lockableElement) {
 int main() {
 	int err = 0;
 
-	test_zeter_lockableElement();
+	test_commons_lockableElement();
 
 	return err ? -1 : 0;
 }

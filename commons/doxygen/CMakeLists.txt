@@ -19,11 +19,11 @@ if(BUILD_DOCUMENTATION)
 
   #-- Configure the Template Doxyfile for our specific project
   configure_file(Doxyfile.in 
-                 ${ZETER_BINARY_DIR}/doxygen/Doxyfile  @ONLY IMMEDIATE)
+                 ${COMMONS_BINARY_DIR}/doxygen/Doxyfile  @ONLY IMMEDIATE)
   #-- Add a custom target to run Doxygen when ever the project is built
-  add_custom_target (Docs_Zeter 
-  	COMMAND ${DOXYGEN_EXECUTABLE} ${ZETER_BINARY_DIR}/doxygen/Doxyfile
-  	SOURCES ${ZETER_BINARY_DIR}/doxygen/Doxyfile)
+  add_custom_target (Docs_Commons 
+  	COMMAND ${DOXYGEN_EXECUTABLE} ${COMMONS_BINARY_DIR}/doxygen/Doxyfile
+  	SOURCES ${COMMONS_BINARY_DIR}/doxygen/Doxyfile)
   # IF you do NOT want the documentation to be generated EVERY time you build the project
   # then leave out the 'ALL' keyword from the above command.
 endif()

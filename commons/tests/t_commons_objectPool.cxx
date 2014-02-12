@@ -1,11 +1,11 @@
 #include <assert.h>
-#include "zeter_tests.h"
+#include "commons_tests.h"
 #include <boost/pool/object_pool.hpp>
 #include "memory/growthByNextPowerOfTwo.h"
 #include "memory/arrayAllocator.h"
 #include "synchronization/lockableElement.h"
 
-TEST(test_zeter_arrayAllocator_basic) {
+TEST(test_commons_arrayAllocator_basic) {
 
 	const std::size_t size = 10;
 	ArrayAllocator<LockableElement, GrowthByNextPowerOfTwo, size>* allocator =
@@ -36,7 +36,7 @@ TEST(test_zeter_arrayAllocator_basic) {
 	return 0;
 }
 
-TEST(test_zeter_arrayAllocator_mass) {
+TEST(test_commons_arrayAllocator_mass) {
 
 	const std::size_t size = 10;
 	ArrayAllocator<LockableElement, GrowthByNextPowerOfTwo, size>* allocator =
@@ -62,7 +62,7 @@ TEST(test_zeter_arrayAllocator_mass) {
 	return 0;
 }
 
-TEST(test_zeter_objectPool_basic) {
+TEST(test_commons_objectPool_basic) {
 
 	boost::object_pool<LockableElement> p;
 
@@ -75,7 +75,7 @@ TEST(test_zeter_objectPool_basic) {
 	return 0;
 }
 
-TEST(test_zeter_growth_GetNextSize) {
+TEST(test_commons_growth_GetNextSize) {
 
 	GrowthByNextPowerOfTwo growth;
 
@@ -104,7 +104,7 @@ TEST(test_zeter_growth_GetNextSize) {
 	return 0;
 }
 
-TEST(test_zeter_growth_GetSlotForSize) {
+TEST(test_commons_growth_GetSlotForSize) {
 
 	GrowthByNextPowerOfTwo growth;
 
@@ -133,11 +133,11 @@ TEST(test_zeter_growth_GetSlotForSize) {
 int main() {
 	int err = 0;
 
-	test_zeter_objectPool_basic();
-	test_zeter_growth_GetNextSize();
-	test_zeter_growth_GetSlotForSize();
-	test_zeter_arrayAllocator_basic();
-	test_zeter_arrayAllocator_mass();
+	test_commons_objectPool_basic();
+	test_commons_growth_GetNextSize();
+	test_commons_growth_GetSlotForSize();
+	test_commons_arrayAllocator_basic();
+	test_commons_arrayAllocator_mass();
 
 	return err ? -1 : 0;
 }
