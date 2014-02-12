@@ -1,10 +1,10 @@
-MACRO(C4_TEST name)
+MACRO(PROPERTYSTORE_TEST name)
         ADD_EXECUTABLE(${name} ${name}.cxx)
-        TARGET_LINK_LIBRARIES(${name}  C4)
+        TARGET_LINK_LIBRARIES(${name}  PROPERTYSTORE)
         ADD_TEST(${name} ${name})
-ENDMACRO(C4_TEST name)
+ENDMACRO(PROPERTYSTORE_TEST name)
 
 INCLUDE_DIRECTORIES(../include/)
 INCLUDE_DIRECTORIES(../src/)
 
-C4_TEST(t_c4_basic)
+PROPERTYSTORE_TEST(t_propertyStore_basic)

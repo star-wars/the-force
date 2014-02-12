@@ -1,5 +1,5 @@
 /*
- * Propertystore.tpp
+ * propertystore.tpp
  *
  *  Created on: 09.09.2013
  *      Author: cosh
@@ -24,48 +24,48 @@
 
  */
 
-#include "Propertystore.h"
+#include "propertyStore.h"
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::InsertOrUpdate(
+void PropertyStore<TValue, TRowId, TColumnId>::InsertOrUpdate(
 		const TRowId rowId, const TColumnId columnId, const TValue* value,
 		const int ttl) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-bool Propertystore<TValue, TRowId, TColumnId>::TryGet(
+bool PropertyStore<TValue, TRowId, TColumnId>::TryGet(
 		const TRowId rowId, const TColumnId columnId, TValue* outResult) {
 	return true;
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Tombstone(
+void PropertyStore<TValue, TRowId, TColumnId>::Tombstone(
 		const TRowId rowId, const TColumnId columnId) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Tombstone(
+void PropertyStore<TValue, TRowId, TColumnId>::Tombstone(
 		const TRowId rowId) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Compact() {
+void PropertyStore<TValue, TRowId, TColumnId>::Compact() {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::TabulaRasa() {
+void PropertyStore<TValue, TRowId, TColumnId>::TabulaRasa() {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Save(
+void PropertyStore<TValue, TRowId, TColumnId>::Save(
 		const char* outputStream) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Load(
+void PropertyStore<TValue, TRowId, TColumnId>::Load(
 		const char* inputStream) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void Propertystore<TValue, TRowId, TColumnId>::Shutdown() {
+void PropertyStore<TValue, TRowId, TColumnId>::Shutdown() {
 }

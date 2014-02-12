@@ -1,5 +1,5 @@
 INSTALL(FILES  
-        Propertystore.h
+        propertyStore.h
         DESTINATION include/
         )
 

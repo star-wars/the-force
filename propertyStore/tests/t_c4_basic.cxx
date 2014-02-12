@@ -3,18 +3,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include "c4_tests.h"
-#include "C4.h"
-#include "C4.tpp"
+#include "propertyStore_tests.h"
+#include "propertyStore.h"
+#include "propertyStore.tpp"
 #include <boost/any.hpp>
 
-TEST(test_c4_basic_1) {
+TEST(test_propertyStore_basic_1) {
 	assert(1 > 0);
 
 	return 0;
 }
 
-TEST(test_c4_basic_2) {
+TEST(test_propertyStore_basic_2) {
         assert(1 > 0);
 
         return 0;
@@ -22,10 +22,10 @@ TEST(test_c4_basic_2) {
 
 int main() {
         int err = 0;
-        C4<boost::any, long, short>* c4 = new C4<boost::any, long, short>(23);
+        PropertyStore<boost::any, long, short>* ps = new PropertyStore<boost::any, long, short>(23);
 
-        test_c4_basic_1(c4);
-        test_c4_basic_2(c4);
+        test_propertyStore_basic_1(ps);
+        test_propertyStore_basic_2(ps);
 
         return err ? -1 : 0;
 }

@@ -17,7 +17,7 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 install_manifest.txt
-ctp
+the-force
 CTestTestfile.cmake
 CPackConfig.cmake
 CPackSourceConfig.cmake
@@ -35,4 +35,3 @@ _CPack_Packages/*
 *-Linux.tar.gz
 doc/*
 Doxyfile
-Dependencies/Testing/*

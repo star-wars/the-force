@@ -1,5 +1,5 @@
 /*
- * Propertystore.cpp
+ * propertystore.cpp
  *
  *  Created on: 25.03.2013
  *      Author: cosh
@@ -24,6 +24,6 @@
 
  */
 
-#include "Propertystore.h"
+#include "propertyStore.h"
 
 

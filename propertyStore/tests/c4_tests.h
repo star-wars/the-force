@@ -1,1 +1,1 @@
-#define TEST(name) static int name(C4<boost::any, long, short> *c4)
+#define TEST(name) static int name(PropertyStore<boost::any, long, short> *ps)

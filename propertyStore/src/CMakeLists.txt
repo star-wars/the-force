@@ -1,8 +1,8 @@
 INCLUDE_DIRECTORIES(../include/)
 
-SET(PROPERTYSTORE_SRC ${C4_SRC}
-  Propertystore.cpp
-  Propertystore.tpp
+SET(PROPERTYSTORE_SRC ${PROPERTYSTORE_SRC}
+  propertyStore.cpp
+  propertyStore.tpp
 )
 
 ADD_LIBRARY(PROPERTYSTORE ${PROPERTYSTORE_SRC})
