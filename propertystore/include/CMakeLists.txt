@@ -1,5 +1,5 @@
 INSTALL(FILES  
-        C4.h
+        Propertystore.h
         DESTINATION include/
         )
 

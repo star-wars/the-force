@@ -1,5 +1,5 @@
 /*
- * C4.h
+ * Propertystore.h
  *
  *  Created on: 25.03.2013
  *      Author: cosh
@@ -24,18 +24,18 @@
 
  */
 
-#ifndef C4_H_
-#define C4_H_
+#ifndef Propertystore_H_
+#define Propertystore_H_
 
 /**
- * C4 is an in memory column store
+ * Propertystore is an in memory column store
  *
  * TValue: The type of the values in the columns
  * TRowId: The type of the row identifier
  * TColumnId: The type of the column identifier
  */
 template<class TValue, class TRowId, class TColumnId>
-class C4 {
+class Propertystore {
 
 private:
 
@@ -47,7 +47,7 @@ public:
 	 * Creates a new column store
 	 * @param compactionInterval The interval that the columnstore should be compacted
 	 */
-	explicit C4(int compactionInterval) :
+	explicit Propertystore(int compactionInterval) :
 			_compactionInterval(compactionInterval) {
 
 	}
@@ -114,4 +114,4 @@ public:
 	void Shutdown();
 };
 
-#endif /* C4_H_ */
+#endif /* Propertystore_H_ */

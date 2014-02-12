@@ -19,11 +19,11 @@ if(BUILD_DOCUMENTATION)
 
   #-- Configure the Template Doxyfile for our specific project
   configure_file(Doxyfile.in 
-                 ${C4_BINARY_DIR}/doxygen/Doxyfile  @ONLY IMMEDIATE)
+                 ${PROPERTYSTORE_BINARY_DIR}/doxygen/Doxyfile  @ONLY IMMEDIATE)
   #-- Add a custom target to run Doxygen when ever the project is built
-  add_custom_target (Docs_C4 
-  	COMMAND ${DOXYGEN_EXECUTABLE} ${C4_BINARY_DIR}/doxygen/Doxyfile
-  	SOURCES ${C4_BINARY_DIR}/doxygen/Doxyfile)
+  add_custom_target (Docs_PROPERTYSTORE 
+  	COMMAND ${DOXYGEN_EXECUTABLE} ${PROPERTYSTORE_BINARY_DIR}/doxygen/Doxyfile
+  	SOURCES ${PROPERTYSTORE_BINARY_DIR}/doxygen/Doxyfile)
   # IF you do NOT want the documentation to be generated EVERY time you build the project
   # then leave out the 'ALL' keyword from the above command.
 endif()

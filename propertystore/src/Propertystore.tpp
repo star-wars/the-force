@@ -1,5 +1,5 @@
 /*
- * C4.tpp
+ * Propertystore.tpp
  *
  *  Created on: 09.09.2013
  *      Author: cosh
@@ -24,48 +24,48 @@
 
  */
 
-#include "C4.h"
+#include "Propertystore.h"
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::InsertOrUpdate(
+void Propertystore<TValue, TRowId, TColumnId>::InsertOrUpdate(
 		const TRowId rowId, const TColumnId columnId, const TValue* value,
 		const int ttl) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-bool C4<TValue, TRowId, TColumnId>::TryGet(
+bool Propertystore<TValue, TRowId, TColumnId>::TryGet(
 		const TRowId rowId, const TColumnId columnId, TValue* outResult) {
 	return true;
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Tombstone(
+void Propertystore<TValue, TRowId, TColumnId>::Tombstone(
 		const TRowId rowId, const TColumnId columnId) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Tombstone(
+void Propertystore<TValue, TRowId, TColumnId>::Tombstone(
 		const TRowId rowId) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Compact() {
+void Propertystore<TValue, TRowId, TColumnId>::Compact() {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::TabulaRasa() {
+void Propertystore<TValue, TRowId, TColumnId>::TabulaRasa() {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Save(
+void Propertystore<TValue, TRowId, TColumnId>::Save(
 		const char* outputStream) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Load(
+void Propertystore<TValue, TRowId, TColumnId>::Load(
 		const char* inputStream) {
 }
 
 template<class TValue, class TRowId, class TColumnId>
-void C4<TValue, TRowId, TColumnId>::Shutdown() {
+void Propertystore<TValue, TRowId, TColumnId>::Shutdown() {
 }
