@@ -1,9 +1,9 @@
-MACRO(PATH_TEST name)
+MACRO(GRAPHSTORE_TEST name)
         ADD_EXECUTABLE(${name} ${name}.cxx)
-        TARGET_LINK_LIBRARIES(${name}  PATH)
+        TARGET_LINK_LIBRARIES(${name}  GRAPHSTORE)
         ADD_TEST(${name} ${name})
-ENDMACRO(PATH_TEST name)
+ENDMACRO(GRAPHSTORE_TEST name)
 
 INCLUDE_DIRECTORIES(../include/)
 
-PATH_TEST(t_path_basic)
+PATH_TEST(t_graphStore_basic)

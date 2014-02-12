@@ -1,9 +1,9 @@
 /*
- * pathDb.h
+ * graphStore.h
  *
  *  Created on: 29.04.2013
  *      Author: cosh
- *     Purpose: The pathDb header file
+ *     Purpose: The graphStore header file
  *
  * Copyright (c) 2013 Henning Rauch
  *
@@ -24,26 +24,26 @@
 
  */
 
-#ifndef _pathDb_h
-#define _pathDb_h
+#ifndef _graphStore_h
+#define _graphStore_h
 
 #include "manager/transactionManager.h"
-#include "C4.h"
+#include "propertyStore.h"
 
-template<class TValue, class TRowId, class TColumnId> class C4;
+template<class TValue, class TRowId, class TColumnId> class PropertyStore;
 
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-class PathDb {
+class GraphStore {
 private:
-	C4<TValue, TGraphElementId, TPropertyId>* _c4;
+	PropertyStore<TValue, TGraphElementId, TPropertyId>* _ps;
 	TransactionManager* _transactionManager;
 
 public:
 	void Print();
 
-	explicit PathDb(int compactionInterval)
+	explicit GraphStore(int compactionInterval)
 	{
-		_c4 = new C4<TValue, TGraphElementId, TPropertyId>(compactionInterval);
+		_ps = new PropertyStore<TValue, TGraphElementId, TPropertyId>(compactionInterval);
 		_transactionManager = new TransactionManager();
 	}
 };

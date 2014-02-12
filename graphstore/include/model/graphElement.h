@@ -27,7 +27,7 @@
 #ifndef _graphElement_h
 #define _graphElement_h
 
-#include "pathDb.h"
+#include "graphStore.h"
 
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
 class GraphElement {
@@ -39,7 +39,7 @@ private:
 	unsigned int _modificationDateDifference;
 	TShortCut _shortCut;
 
-	const PathDb<TValue, TGraphElementId, TPropertyId, TShortCut> * _pathDb;
+	const GraphStore<TValue, TGraphElementId, TPropertyId, TShortCut> * _gs;
 
 	void AddProperty(const TPropertyId propertyId, TValue* const value, const int ttl = 0);
 	void RemoveProperty(const TPropertyId propertyId);

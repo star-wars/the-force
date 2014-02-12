@@ -1,9 +1,9 @@
 /*
- * pathDb.cpp
+ * graphStore.cpp
  *
  *  Created on: 29.04.2013
  *      Author: cosh
- *     Purpose: The pathDB implementation
+ *     Purpose: The graphStore implementation
  *
  * Copyright (c) 2013 Henning Rauch
  *
@@ -24,10 +24,10 @@
 
  */
 
-#include "pathDb.h"
-#include "KeyKeyValueStore.h"
+#include "graphStore.h"
+#include "propertyStore.h"
 #include <stdio.h>
 
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-inline void PathDb<TValue, TGraphElementId, TPropertyId, TShortCut>::Print() {
+inline void GraphStore<TValue, TGraphElementId, TPropertyId, TShortCut>::Print() {
 }

@@ -1,5 +1,5 @@
 INSTALL(FILES  
-        pathDb.h 
+        graphStore.h 
         DESTINATION include/
         )
 
