@@ -3,9 +3,9 @@ compiler:
   - gcc
   - clang
 before_install:
-  - apt-get install libboost-all-dev
-  - apt-get install doxygen
-  - apt-get install gnuplot
+  - sudo apt-get install libboost-all-dev
+  - sudo apt-get install doxygen
+  - sudo apt-get install gnuplot
 before_script:
   - cmake .
 script: make clean all test
