@@ -1,3 +1,0 @@
-[submodule "Dependencies/Path"]
-	path = Dependencies/Path
-	url = git@github.com:cosh/Path.git
