@@ -1,11 +1,9 @@
 PROJECT(ZETER)
 
-###C++11
-if(UNIX)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -pthread")
-endif()
-
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+### C++11 + threading
+list(APPEND CMAKE_CXX_FLAGS "-pthread -std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs -Wall")
 
 ###BOOST
 FIND_PACKAGE(Boost COMPONENTS system thread REQUIRED)
