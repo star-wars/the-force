@@ -1,0 +1,7 @@
+thrift --gen cpp The-force_Service.thrift
+thrift --gen java The-force_Service.thrift
+thrift --gen perl The-force_Service.thrift
+thrift --gen go The-force_Service.thrift
+thrift --gen ruby The-force_Service.thrift
+thrift --gen rb The-force_Service.thrift
+thrift --gen csharp The-force_Service.thrift
