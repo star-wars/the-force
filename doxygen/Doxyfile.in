@@ -1,4 +1,4 @@
-PROJECT_NAME         = C-the-path
+PROJECT_NAME         = THE-FORCE
 
 FULL_PATH_NAMES      = YES
 WARN_IF_UNDOCUMENTED = YES
@@ -27,18 +27,20 @@ REFERENCES_RELATION    = YES
 
 ALLEXTERNALS         = NO
 
-IMAGE_PATH           = "@C-THE-PATH_BINARY_DIR@/contrib"
+IMAGE_PATH           = "@THE-FORCE_BINARY_DIR@/contrib"
 
-OUTPUT_DIRECTORY     = "@C-THE-PATH_BINARY_DIR@/doc"
+OUTPUT_DIRECTORY     = "@THE-FORCE_BINARY_DIR@/doc"
 
-STRIP_FROM_PATH = "@C-THE-PATH_SOURCE_DIR@"
+STRIP_FROM_PATH = "@THE-FORCE_SOURCE_DIR@"
 
 INPUT                = \
- "@C-THE-PATH_SOURCE_DIR@/src" \
- "@C-THE-PATH_SOURCE_DIR@/Dependencies/Path/src" \
- "@C-THE-PATH_SOURCE_DIR@/Dependencies/Path/include" \
- "@C-THE-PATH_SOURCE_DIR@/Dependencies/Path/Dependencies/C4/src" \
- "@C-THE-PATH_SOURCE_DIR@/Dependencies/Path/Dependencies/C4/include" \
+ "@THE-FORCE_SOURCE_DIR@/startup" \
+ "@THE-FORCE_SOURCE_DIR@/graphstore/src" \
+ "@THE-FORCE_SOURCE_DIR@/graphstore/include" \
+ "@THE-FORCE_SOURCE_DIR@/propertystore/src" \
+ "@THE-FORCE_SOURCE_DIR@/propertystore/include" \
+ "@THE-FORCE_SOURCE_DIR@/commons/src" \
+ "@THE-FORCE_SOURCE_DIR@/commons/include" \
 
 EXTRACT_ALL          = YES
 EXTRACT_PRIVATE      = NO

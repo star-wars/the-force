@@ -6,4 +6,4 @@ ENDMACRO(GRAPHSTORE_TEST name)
 
 INCLUDE_DIRECTORIES(../include/)
 
-PATH_TEST(t_graphStore_basic)
+GRAPHSTORE_TEST(t_graphStore_basic)
