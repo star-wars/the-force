@@ -1,10 +1,10 @@
-namespace java com.cosh.c4.thrift
-namespace cpp com.cosh.c4.thrift
-namespace csharp cosh.c4
-namespace py c4
-namespace php c4
-namespace perl c4
-namespace rb c4Thrift
+namespace java com.star-wars.the-force.thrift
+namespace cpp com.star-wars.the-force.thrift
+namespace csharp start-wars.the-force
+namespace py the-force
+namespace php the-force
+namespace perl the-force
+namespace rb the-force-Thrift
 
 #
 # Constants
@@ -36,9 +36,9 @@ exception InvalidRequestException {
 }
 
 #
-# c4 service api
+# the-force service api
 #
-service C4 {
+service The-force {
 
 	/**
 	 * Inserts or updates a new row including the corresponding column with a new value
@@ -73,9 +73,9 @@ service C4 {
 }
 
 #
-# c4 admin service api
+# the-force admin service api
 #
-service C4Admin {
+service The-force-Admin {
 	/**
 	 * Executes a compaction
 	 */
