@@ -23,8 +23,8 @@ int main() {
 	int err = 0;
 	GraphStore<boost::any, long, short, boost::any> *gs = new GraphStore<boost::any, long, short, boost::any>(1000);
 
-	test_path_basic_1(gs);
-	test_path_basic_2(gs);
+	test_graphStore_basic_1(gs);
+	test_graphStore_basic_2(gs);
 
 	return err ? -1 : 0;
 }
