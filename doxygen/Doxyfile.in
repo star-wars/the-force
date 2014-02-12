@@ -35,10 +35,10 @@ STRIP_FROM_PATH = "@THE-FORCE_SOURCE_DIR@"
 
 INPUT                = \
  "@THE-FORCE_SOURCE_DIR@/startup" \
- "@THE-FORCE_SOURCE_DIR@/graphstore/src" \
- "@THE-FORCE_SOURCE_DIR@/graphstore/include" \
- "@THE-FORCE_SOURCE_DIR@/propertystore/src" \
- "@THE-FORCE_SOURCE_DIR@/propertystore/include" \
+ "@THE-FORCE_SOURCE_DIR@/graphStore/src" \
+ "@THE-FORCE_SOURCE_DIR@/graphStore/include" \
+ "@THE-FORCE_SOURCE_DIR@/propertyStore/src" \
+ "@THE-FORCE_SOURCE_DIR@/propertyStore/include" \
  "@THE-FORCE_SOURCE_DIR@/commons/src" \
  "@THE-FORCE_SOURCE_DIR@/commons/include" \
 
