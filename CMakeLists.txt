@@ -31,7 +31,7 @@ ADD_SUBDIRECTORY(graphstore)
 ADD_SUBDIRECTORY(doxygen)
 
 SET(THE-FORCE_SRC ${THE-FORCE_SRC}
-  startup/the-force.cxx
+  startup/the-force.cpp
 )
 
 # Make sure the compiler can find include files from the graphstore library.
