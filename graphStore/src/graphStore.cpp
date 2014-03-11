@@ -28,6 +28,3 @@
 #include "propertyStore.h"
 #include <stdio.h>
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-inline void GraphStore<TValue, TGraphElementId, TPropertyId, TShortCut>::Print() {
-}

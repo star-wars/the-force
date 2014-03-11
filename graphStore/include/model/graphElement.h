@@ -29,6 +29,8 @@
 
 #include "graphStore.h"
 
+template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class GraphStore;
+
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
 class GraphElement {
 

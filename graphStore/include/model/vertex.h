@@ -32,6 +32,7 @@
 //forward definitions
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Edge;
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class EdgeContainer;
+template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class GraphStore;
 
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
 class Vertex : public GraphElement<TValue, TGraphElementId, TPropertyId, TShortCut> {

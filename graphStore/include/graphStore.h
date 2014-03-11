@@ -29,8 +29,10 @@
 
 #include "manager/transactionManager.h"
 #include "propertyStore.h"
+#include "definition/property.h"
 
-template<class TValue, class TRowId, class TColumnId> class PropertyStore;
+template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Edge;
+template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Vertex;
 
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
 class GraphStore {
@@ -39,13 +41,26 @@ private:
 	TransactionManager* _transactionManager;
 
 public:
-	void Print();
-
 	explicit GraphStore(int compactionInterval)
 	{
 		_ps = new PropertyStore<TValue, TGraphElementId, TPropertyId>(compactionInterval);
 		_transactionManager = new TransactionManager();
 	}
+
+	const TGraphElementId* const AddVertex(
+		Property<TPropertyId, TValue> const properties[],
+		const TShortCut* const shortCut);
+
+	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetVertex(const TGraphElementId* const id);
+
+	const TGraphElementId* const AddEdge(
+		const TGraphElementId source,
+		const TGraphElementId destination,
+		const TPropertyId edgePropertyId,
+                const Property<TPropertyId, TValue> properties[],
+                const TShortCut* const shortCut);
+
+	const Edge<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetEdge(const TGraphElementId* const id);
 };
 
 #endif

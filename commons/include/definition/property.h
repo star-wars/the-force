@@ -1,11 +1,11 @@
 /*
- * edge.h
+ * property.h
  *
- *  Created on: 29.04.2013
+ *  Created on: 11.03.2014
  *      Author: cosh
- *     Purpose:
+ *     Purpose: key value
  *
- * Copyright (c) 2013 Henning Rauch
+ * Copyright (c) 2014 Henning Rauch
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in the
@@ -24,20 +24,52 @@
 
  */
 
-#ifndef _edge_h
-#define _edge_h
+#ifndef _property_h
+#define _property_h
 
-#include "graphElement.h"
+template<class TKey, class TValue>
+class Property {
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Vertex;
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class GraphStore;
+private:
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-class Edge : public GraphElement<TValue, TGraphElementId, TPropertyId, TShortCut> {
+	/**
+	 * The key of the property
+	 */
+	TKey const _key;
+
+	/**
+	 * The value of the property
+	 */
+	TValue const _value;
 
 public:
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const Source;
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const Destination;
+
+	/**
+	 * Creates a new property
+	 * @param key The key of the property
+	 * @param value The value of the property
+	 */
+	explicit Property(TKey const key, TValue const value) :
+			_key(key), _value(value) {
+	}
+
+	/**
+	 * Gets the key of the property
+	 * @return The key
+	 */
+	TKey const GetKey()
+	{
+		return _key;
+	}
+
+	/**
+	 * Gets the value of the property
+	 * @return The value
+	 */
+	TValue const GetValue()
+	{
+		return _value;
+	}
 };
 
 #endif
