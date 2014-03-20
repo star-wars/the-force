@@ -27,32 +27,73 @@
 #ifndef _graphElement_h
 #define _graphElement_h
 
-#include "graphStore.h"
-
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class GraphStore;
-
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
+/**
+ * The class that hosts the attributes and functions that are used by any graph element
+ */
+template<class TValue, class TGraphElementId>
 class GraphElement {
 
 private:
+	/**
+	 * The unique identifier of the graph element
+	 */
 	const TGraphElementId _id;
-	bool _isDirty;
-	const long _creationDate;
+
+	/**
+	 * The creation date of the graph element
+	 */
+	const long long _creationDate;
+
+	/**
+	 * The difference to the creation date
+	 */
 	unsigned int _modificationDateDifference;
-	TShortCut _shortCut;
 
-	const GraphStore<TValue, TGraphElementId, TPropertyId, TShortCut> * _gs;
+	/**
+	 * The shortcut is a fast lookup property
+	 */
+	std::string _shortCut;
 
-	void AddProperty(const TPropertyId propertyId, TValue* const value, const int ttl = 0);
-	void RemoveProperty(const TPropertyId propertyId);
+	/**
+	 * Add a property to the graph element
+	 * @param propertyId The unique identifier of the property
+	 * @param value The value of the property
+	 * @param ttl The time to live for the property
+	 */
+	void AddProperty(const unsigned short propertyId, TValue* const value, const unsigned int ttl = 0);
+
+	/**
+	 * Removes a property
+	 * @param propertyId The unique identifier of the property
+	 */
+	const bool RemoveProperty(const unsigned short propertyId);
 
 public:
-	const long GetCreationDate();
-	const long GetModificationDate();
 
-	const TShortCut GetShortcut();
+	/**
+	  * Gets the creation date
+	  * @return The utc time stamp
+	  */
+	const long long GetCreationDate();
 
-	const TValue * const GetProperty(const TPropertyId propertyId);
+	/**
+	 * Gets the modification date
+     * @return The utc time stamp
+	 */
+	const long long GetModificationDate();
+
+	/**
+	 * Get the shortcut
+	 * @return The shortcut
+	 */
+	const std::string GetShortcut();
+
+	/**
+	 * Gets a property
+	 * @param propertyId The unique identifier of the property
+	 * @return The value of the property
+	 */
+	const TValue * const GetProperty(const unsigned short propertyId);
 };
 
 #endif
