@@ -30,26 +30,33 @@
 #include "manager/transactionManager.h"
 #include "propertyStore.h"
 #include "definition/property.h"
-
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Edge;
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Vertex;
+#include "model/edge.h"
+#include "model/vertex.h"
 
 /**
  *
  */
-template<
-	class TValue,
+template
+<
 	class TGraphElementId,
-	class TPropertyId,
-	class TShortCut>
-class GraphStore {
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+> class GraphStore {
+
+typedef Edge<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
+typedef Vertex<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
+typedef GraphElement<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyGraphElement;
 
 private:
 
 	/**
 	 *
 	 */
-	PropertyStore<TValue, TGraphElementId, TPropertyId>* _ps;
+	PropertyStore<TValue, TGraphElementId, short>* _ps;
 
 	/**
 	 *
@@ -64,7 +71,7 @@ public:
 	 */
 	explicit GraphStore(int compactionInterval)
 	{
-		_ps = new PropertyStore<TValue, TGraphElementId, TPropertyId>(compactionInterval);
+		_ps = new PropertyStore<TValue, TGraphElementId, short>(compactionInterval);
 		_transactionManager = new TransactionManager();
 	}
 
@@ -77,16 +84,16 @@ public:
 	 * @return
 	 */
 	const TGraphElementId AddVertex(
-		Property<TPropertyId, TValue> const properties[],
+		Property<short, TValue> const properties[],
 		const TShortCut* const shortCut,
-		const long const creationDate);
+		const long creationDate);
 
 	/**
 	 *
 	 * @param id
 	 * @return
 	 */
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetVertex(
+	const MyVertex* const GetVertex(
 			const TGraphElementId id);
 
 	/**
@@ -102,17 +109,17 @@ public:
 	const TGraphElementId AddEdge(
 		const TGraphElementId source,
 		const TGraphElementId destination,
-		const TPropertyId edgePropertyId,
-                const Property<TPropertyId, TValue> properties[],
-                const TShortCut* const shortCut,
-        		const long const creationDate);
+		const short edgePropertyId,
+        const Property<short, TValue> properties[],
+        const TShortCut* const shortCut,
+        const long creationDate);
 
 	/**
 	 *
 	 * @param id
 	 * @return
 	 */
-	const Edge<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetEdge(
+	const MyEdge* const GetEdge(
 			const TGraphElementId id);
 
 	/**
@@ -120,7 +127,7 @@ public:
 	 * @param id
 	 * @return
 	 */
-	const GraphElement<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetGraphElement(
+	const MyGraphElement* const GetGraphElement(
 				const TGraphElementId id);
 
 	/**
@@ -150,7 +157,7 @@ public:
 	 * @param columnId
 	 * @return
 	 */
-	const bool TombstoneProperty(const TGraphElementId id, const TPropertyId columnId);
+	const bool TombstoneProperty(const TGraphElementId id, const short columnId);
 
 	/**
 	 *
@@ -158,7 +165,7 @@ public:
 	 * @param columnId
 	 * @return
 	 */
-	const bool TombstoneEdgeProperty(const TGraphElementId id, const TPropertyId columnId);
+	const bool TombstoneEdgeProperty(const TGraphElementId id, const short columnId);
 
 	/**
 	 *

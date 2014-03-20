@@ -29,15 +29,61 @@
 
 #include "graphElement.h"
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Vertex;
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class GraphStore;
+//forward definitions
+template
+<
+	class TGraphElementId,
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+> class Vertex;
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-class Edge : public GraphElement<TValue, TGraphElementId, TPropertyId, TShortCut> {
+/**
+ * The edge template
+ */
+template
+<
+	class TGraphElementId,
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+>
+class Edge :
+		public GraphElement<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> {
+
+typedef Vertex<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
+
+private:
+
+	/**
+	 * The source vertex
+	 */
+	const MyVertex* const Source;
+
+	/**
+	 * The destination vertex
+	 */
+	const MyVertex* const Destination;
 
 public:
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const Source;
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const Destination;
+
+	/**
+	 * Gets the source of the edge
+	 * @return Source vertex
+	 */
+	const MyVertex* const GetSource();
+
+	/**
+	 * Gets the destination vertex of the edge
+	 * @return Destination vertex
+	 */
+	const MyVertex* const GetDestination();
 };
 
 #endif

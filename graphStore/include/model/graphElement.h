@@ -30,8 +30,20 @@
 /**
  * The class that hosts the attributes and functions that are used by any graph element
  */
-template<class TValue, class TGraphElementId>
-class GraphElement {
+template
+<
+	class TGraphElementId,
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+>
+class GraphElement :
+		public DatePolicy<TDate>,
+		public ShortCutPolicy<TShortCut>,
+		public PropertyPolicy<TValue>{
 
 private:
 	/**
@@ -39,61 +51,12 @@ private:
 	 */
 	const TGraphElementId _id;
 
-	/**
-	 * The creation date of the graph element
-	 */
-	const long long _creationDate;
-
-	/**
-	 * The difference to the creation date
-	 */
-	unsigned int _modificationDateDifference;
-
-	/**
-	 * The shortcut is a fast lookup property
-	 */
-	std::string _shortCut;
-
-	/**
-	 * Add a property to the graph element
-	 * @param propertyId The unique identifier of the property
-	 * @param value The value of the property
-	 * @param ttl The time to live for the property
-	 */
-	void AddProperty(const unsigned short propertyId, TValue* const value, const unsigned int ttl = 0);
-
-	/**
-	 * Removes a property
-	 * @param propertyId The unique identifier of the property
-	 */
-	const bool RemoveProperty(const unsigned short propertyId);
-
 public:
-
 	/**
-	  * Gets the creation date
-	  * @return The utc time stamp
-	  */
-	const long long GetCreationDate();
-
-	/**
-	 * Gets the modification date
-     * @return The utc time stamp
+	 * Gets the graph element Id
+	 * @return The graph element identifier
 	 */
-	const long long GetModificationDate();
-
-	/**
-	 * Get the shortcut
-	 * @return The shortcut
-	 */
-	const std::string GetShortcut();
-
-	/**
-	 * Gets a property
-	 * @param propertyId The unique identifier of the property
-	 * @return The value of the property
-	 */
-	const TValue * const GetProperty(const unsigned short propertyId);
+	const TGraphElementId GetId();
 };
 
 #endif

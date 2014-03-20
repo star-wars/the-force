@@ -27,19 +27,38 @@
 #ifndef _edgeContainer_h
 #define _edgeContainer_h
 
-//forward definition
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
-class Edge;
+//forward definitions
+template
+<
+	class TGraphElementId,
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+> class Edge;
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
+template
+<
+	class TGraphElementId,
+	class TDate,
+	template <class TDate> class DatePolicy,
+	class TShortCut,
+	template <class TShortCut> class ShortCutPolicy,
+	class TValue,
+	template <class TValue> class PropertyPolicy
+>
 class EdgeContainer {
+
+	typedef Edge<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
 
 private:
 	int _openEdgeSlots; //if 0, increase edge array
 
 public:
-	const TPropertyId EdgePropertyId;
-	Edge<TValue, TGraphElementId, TPropertyId, TShortCut>* Edges;
+	const short EdgePropertyId;
+	MyEdge* Edges;
 };
 
 #endif
