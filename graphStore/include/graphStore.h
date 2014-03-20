@@ -34,33 +34,153 @@
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Edge;
 template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut> class Vertex;
 
-template<class TValue, class TGraphElementId, class TPropertyId, class TShortCut>
+/**
+ *
+ */
+template<
+	class TValue,
+	class TGraphElementId,
+	class TPropertyId,
+	class TShortCut>
 class GraphStore {
+
 private:
+
+	/**
+	 *
+	 */
 	PropertyStore<TValue, TGraphElementId, TPropertyId>* _ps;
+
+	/**
+	 *
+	 */
 	TransactionManager* _transactionManager;
 
 public:
+
+	/**
+	 *
+	 * @param compactionInterval
+	 */
 	explicit GraphStore(int compactionInterval)
 	{
 		_ps = new PropertyStore<TValue, TGraphElementId, TPropertyId>(compactionInterval);
 		_transactionManager = new TransactionManager();
 	}
 
-	const TGraphElementId* const AddVertex(
+
+	/**
+	 *
+	 * @param properties
+	 * @param shortCut
+	 * @param creationDate
+	 * @return
+	 */
+	const TGraphElementId AddVertex(
 		Property<TPropertyId, TValue> const properties[],
-		const TShortCut* const shortCut);
+		const TShortCut* const shortCut,
+		const long const creationDate);
 
-	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetVertex(const TGraphElementId* const id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const Vertex<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetVertex(
+			const TGraphElementId id);
 
-	const TGraphElementId* const AddEdge(
+	/**
+	 *
+	 * @param source
+	 * @param destination
+	 * @param edgePropertyId
+	 * @param properties
+	 * @param shortCut
+	 * @param creationDate
+	 * @return
+	 */
+	const TGraphElementId AddEdge(
 		const TGraphElementId source,
 		const TGraphElementId destination,
 		const TPropertyId edgePropertyId,
                 const Property<TPropertyId, TValue> properties[],
-                const TShortCut* const shortCut);
+                const TShortCut* const shortCut,
+        		const long const creationDate);
 
-	const Edge<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetEdge(const TGraphElementId* const id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const Edge<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetEdge(
+			const TGraphElementId id);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const GraphElement<TValue, TGraphElementId, TPropertyId, TShortCut>* const GetGraphElement(
+				const TGraphElementId id);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const bool RemoveGraphElement(const TGraphElementId id);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const bool RemoveEdge(const TGraphElementId id);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	const bool RemoveVertex(const TGraphElementId id);
+
+	/**
+	 *
+	 * @param id
+	 * @param columnId
+	 * @return
+	 */
+	const bool TombstoneProperty(const TGraphElementId id, const TPropertyId columnId);
+
+	/**
+	 *
+	 * @param id
+	 * @param columnId
+	 * @return
+	 */
+	const bool TombstoneEdgeProperty(const TGraphElementId id, const TPropertyId columnId);
+
+	/**
+	 *
+	 */
+	void TabulaRasa();
+
+	/**
+	 * Saves the graph database
+	 * @param outputStream The output stream
+	 */
+	void Save(const char* outputlStream);
+
+	/**
+	 * Loads the graph database
+	 * @param inputStream The input stream
+	 */
+	void Load(const char* inputStream);
+
+	/**
+	 * Shutdown
+	 */
+	void Shutdown();
 };
 
 #endif
