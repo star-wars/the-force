@@ -43,7 +43,7 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue> class PropertyPolicy
+	template <class TValue, class TGraphElementId> class PropertyPolicy
 > class GraphStore {
 
 typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;

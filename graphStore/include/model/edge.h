@@ -37,7 +37,7 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue> class PropertyPolicy
+	template <class TValue, class TGraphElementId> class PropertyPolicy
 > class Vertex;
 
 /**
@@ -50,7 +50,7 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue> class PropertyPolicy
+	template <class TValue, class TGraphElementId> class PropertyPolicy
 >
 class Edge :
 		public GraphElement<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> {

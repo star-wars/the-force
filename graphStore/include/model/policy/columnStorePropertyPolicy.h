@@ -29,21 +29,86 @@
 
 #include "propertyStore.h"
 
-template<class TValue, class TGraphElementId, class TPropertyId>
+template<class TValue, class TGraphElementId>
 class ColumnStorePropertyPolicy {
 
 private:
 
-	PropertyStore<TValue, TGraphElementId, TPropertyId>* _ps;
+	const TGraphElementId _id;
+	const PropertyStore<TValue, long long, unsigned short>* const _ps;
 
+protected:
+	/**
+	 * Add a property to the graph element
+	 * @param propertyId The unique identifier of the property
+	 * @param value The value of the property
+	 * @param ttl The time to live for the property
+	 */
+	void AddProperty(const unsigned short propertyId, TValue* const value,
+			const unsigned int ttl = 0);
 
+	/**
+	 * Removes a property
+	 * @param propertyId The unique identifier of the property
+	 */
+	const void RemoveProperty(const unsigned short propertyId);
 
-//protected:
+	/**
+	 * Initializes the property policy
+	 * @param propertyStore the property store
+	 */
+	explicit ColumnStorePropertyPolicy(
+			const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+			const TGraphElementId id);
 
+public:
+	/**
+	 * Gets a property
+	 * @param propertyId The unique identifier of the property
+	 * @return The value of the property
+	 */
+	const TValue * const GetProperty(const unsigned short propertyId);
 
-
-//public:
-
+	/**
+	 * Gets the graph element Id
+	 * @return The graph element identifier
+	 */
+	const TGraphElementId GetId();
 };
+
+template<class TValue, class TGraphElementId>
+inline void ColumnStorePropertyPolicy<TValue, TGraphElementId>::AddProperty(
+		const unsigned short propertyId, TValue* const value,
+		const unsigned int ttl) {
+	_ps->InsertOrUpdate(_id, propertyId, value, ttl);
+}
+
+template<class TValue, class TGraphElementId>
+inline const void ColumnStorePropertyPolicy<TValue, TGraphElementId>::RemoveProperty(
+		const unsigned short propertyId) {
+	_ps->Tombstone(_id, propertyId);
+}
+
+template<class TValue, class TGraphElementId>
+inline ColumnStorePropertyPolicy<TValue, TGraphElementId>::ColumnStorePropertyPolicy(
+		const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+		const TGraphElementId id) :
+		_id(id), _ps(propertyStore){
+}
+
+template<class TValue, class TGraphElementId>
+inline const TValue* const ColumnStorePropertyPolicy<TValue, TGraphElementId>::GetProperty(
+		const unsigned short propertyId) {
+
+	TValue* value;
+	_ps->TryGet(_id, propertyId, value);
+
+	return value;
+}
+
+template<class TValue, class TGraphElementId>
+inline const TGraphElementId ColumnStorePropertyPolicy<TValue, TGraphElementId>::GetId() {
+	return _id;
+}
 
 #endif

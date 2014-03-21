@@ -32,16 +32,12 @@
  */
 template<class TGraphElementId, class DatePolicy, class TShortCut, template<
 		class TShortCut> class ShortCutPolicy, class TValue, template<
-		class TValue> class PropertyPolicy>
+		class TValue, class TGraphElementId> class PropertyPolicy>
 class GraphElement: public DatePolicy,
 		public ShortCutPolicy<TShortCut>,
-		public PropertyPolicy<TValue> {
+		public PropertyPolicy<TValue, TGraphElementId> {
 
 private:
-	/**
-	 * The unique identifier of the graph element
-	 */
-	const TGraphElementId _id;
 
 protected:
 
@@ -54,11 +50,7 @@ protected:
 			const TGraphElementId id);
 
 public:
-	/**
-	 * Gets the graph element Id
-	 * @return The graph element identifier
-	 */
-	const TGraphElementId GetId();
+
 };
 
 #endif
