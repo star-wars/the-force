@@ -39,17 +39,16 @@
 template
 <
 	class TGraphElementId,
-	class TDate,
-	template <class TDate> class DatePolicy,
+	class DatePolicy,
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
 	template <class TValue> class PropertyPolicy
 > class GraphStore {
 
-typedef Edge<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
-typedef Vertex<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
-typedef GraphElement<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyGraphElement;
+typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
+typedef Vertex<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
+typedef GraphElement<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyGraphElement;
 
 private:
 
@@ -86,7 +85,7 @@ public:
 	const TGraphElementId AddVertex(
 		Property<short, TValue> const properties[],
 		const TShortCut* const shortCut,
-		const long creationDate);
+		const long long creationDate);
 
 	/**
 	 *
@@ -112,7 +111,7 @@ public:
 		const short edgePropertyId,
         const Property<short, TValue> properties[],
         const TShortCut* const shortCut,
-        const long creationDate);
+        const long long creationDate);
 
 	/**
 	 *

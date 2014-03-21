@@ -31,8 +31,7 @@
 template
 <
 	class TGraphElementId,
-	class TDate,
-	template <class TDate> class DatePolicy,
+	class DatePolicy,
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
@@ -42,8 +41,7 @@ template
 template
 <
 	class TGraphElementId,
-	class TDate,
-	template <class TDate> class DatePolicy,
+	class DatePolicy,
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
@@ -51,7 +49,7 @@ template
 >
 class EdgeContainer {
 
-	typedef Edge<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
+	typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
 
 private:
 	int _openEdgeSlots; //if 0, increase edge array

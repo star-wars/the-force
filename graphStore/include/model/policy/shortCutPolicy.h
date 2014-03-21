@@ -1,11 +1,11 @@
 /*
- * graphElement.cpp
+ * shortCutPolicy.h
  *
- *  Created on: 29.04.2013
+ *  Created on: 21.03.2014
  *      Author: cosh
- *     Purpose: This is the header file for the graph element.
+ *     Purpose: This is a shortcut policy implementation
  *
- * Copyright (c) 2013 Henning Rauch
+ * Copyright (c) 2014 Henning Rauch
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in the
@@ -24,41 +24,54 @@
 
  */
 
-#ifndef _graphElement_h
-#define _graphElement_h
+#ifndef _shortCutPolicy_h
+#define _shortCutPolicy_h
 
-/**
- * The class that hosts the attributes and functions that are used by any graph element
- */
-template<class TGraphElementId, class DatePolicy, class TShortCut, template<
-		class TShortCut> class ShortCutPolicy, class TValue, template<
-		class TValue> class PropertyPolicy>
-class GraphElement: public DatePolicy,
-		public ShortCutPolicy<TShortCut>,
-		public PropertyPolicy<TValue> {
+template<class TShortCut>
+class ShortCutPolicy {
 
 private:
 	/**
-	 * The unique identifier of the graph element
+	 * The shortcut is a fast lookup property
 	 */
-	const TGraphElementId _id;
+	TShortCut _shortCut;
 
 protected:
 
 	/**
-	 * Creates a new graph element
-	 * @param creationDate The creation date
-	 * @param id The graph element identifier
+	 * Sets the shortcut
+	 * @param shortCut The shortcut
 	 */
-	explicit GraphElement(const long long creationDate,
-			const TGraphElementId id);
+	void SetShortCut(const TShortCut shortCut);
+
+	/**
+	 * Initializes a shortcut
+	 * @param shortCut The shortcut
+	 */
+	explicit ShortCutPolicy(const TShortCut shortCut);
 
 public:
+
 	/**
-	 * Gets the graph element Id
-	 * @return The graph element identifier
+	 * Get the shortcut
+	 * @return The shortcut
 	 */
-	const TGraphElementId GetId();
+	const TShortCut GetShortcut();
 };
+
+template<class TShortCut>
+inline void ShortCutPolicy<TShortCut>::SetShortCut(const TShortCut shortCut) {
+	_shortCut = shortCut;
+}
+
+template<class TShortCut>
+inline ShortCutPolicy<TShortCut>::ShortCutPolicy(const TShortCut shortCut) :
+	_shortCut(shortCut){
+}
+
+template<class TShortCut>
+inline const TShortCut ShortCutPolicy<TShortCut>::GetShortcut() {
+	return _shortCut;
+}
 
 #endif

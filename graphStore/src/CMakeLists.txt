@@ -1,5 +1,6 @@
 INCLUDE_DIRECTORIES(../include/)
 INCLUDE_DIRECTORIES(../include/model/)
+INCLUDE_DIRECTORIES(../include/model/policy/)
 INCLUDE_DIRECTORIES(../include/manager/)
 
 SET(GRAPHSTORE_SRC ${GRAPHSTORE_SRC}
@@ -9,6 +10,8 @@ SET(GRAPHSTORE_SRC ${GRAPHSTORE_SRC}
   model/edge.cpp
   model/vertex.cpp
   model/edgeContainer.cpp
+  model/policy/compressedDatePolicy.cpp
+  model/policy/shortCutPolicy.cpp
 )
 
 ADD_LIBRARY(GRAPHSTORE ${GRAPHSTORE_SRC})

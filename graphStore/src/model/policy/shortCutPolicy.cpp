@@ -1,9 +1,9 @@
 /*
- * graphElement.cpp
+ * shortCutPolicy.cpp
  *
- *  Created on: 29.04.2013
+ *  Created on: 21.03.2014
  *      Author: cosh
- *     Purpose: This is the header file for the graph element.
+ *     Purpose:
  *
  * Copyright (c) 2013 Henning Rauch
  *
@@ -24,41 +24,4 @@
 
  */
 
-#ifndef _graphElement_h
-#define _graphElement_h
-
-/**
- * The class that hosts the attributes and functions that are used by any graph element
- */
-template<class TGraphElementId, class DatePolicy, class TShortCut, template<
-		class TShortCut> class ShortCutPolicy, class TValue, template<
-		class TValue> class PropertyPolicy>
-class GraphElement: public DatePolicy,
-		public ShortCutPolicy<TShortCut>,
-		public PropertyPolicy<TValue> {
-
-private:
-	/**
-	 * The unique identifier of the graph element
-	 */
-	const TGraphElementId _id;
-
-protected:
-
-	/**
-	 * Creates a new graph element
-	 * @param creationDate The creation date
-	 * @param id The graph element identifier
-	 */
-	explicit GraphElement(const long long creationDate,
-			const TGraphElementId id);
-
-public:
-	/**
-	 * Gets the graph element Id
-	 * @return The graph element identifier
-	 */
-	const TGraphElementId GetId();
-};
-
-#endif
+#include "shortCutPolicy.h"

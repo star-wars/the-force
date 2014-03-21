@@ -33,8 +33,7 @@
 template
 <
 	class TGraphElementId,
-	class TDate,
-	template <class TDate> class DatePolicy,
+	class DatePolicy,
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
@@ -47,17 +46,16 @@ template
 template
 <
 	class TGraphElementId,
-	class TDate,
-	template <class TDate> class DatePolicy,
+	class DatePolicy,
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
 	template <class TValue> class PropertyPolicy
 >
 class Edge :
-		public GraphElement<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> {
+		public GraphElement<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> {
 
-typedef Vertex<TGraphElementId, TDate, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
+typedef Vertex<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
 
 private:
 
