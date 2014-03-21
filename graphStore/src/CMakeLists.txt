@@ -12,6 +12,7 @@ SET(GRAPHSTORE_SRC ${GRAPHSTORE_SRC}
   model/edgeContainer.cpp
   model/policy/compressedDatePolicy.cpp
   model/policy/shortCutPolicy.cpp
+  model/policy/columnStorePropertyPolicy.cpp
 )
 
 ADD_LIBRARY(GRAPHSTORE ${GRAPHSTORE_SRC})
