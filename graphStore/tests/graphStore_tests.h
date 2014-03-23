@@ -1,1 +1,1 @@
-#define TEST(name) static int name(GraphStore<boost::any, long, short, boost::any> *gs)
+#define TEST(name) static int name(GraphStore<long long, CompressedDatePolicy, long, ShortCutPolicy, std::string, ColumnStorePropertyPolicy> *gs)
