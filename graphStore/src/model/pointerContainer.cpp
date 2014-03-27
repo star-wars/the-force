@@ -1,5 +1,5 @@
 /*
- * edgeContainer.cpp
+ * pointerContainer.cpp
  *
  *  Created on: 29.04.2013
  *      Author: cosh
@@ -24,7 +24,7 @@
 
  */
 
-#include "edgeContainer.h"
+#include "pointerContainer.h"
 
 
 

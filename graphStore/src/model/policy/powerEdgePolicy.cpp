@@ -1,7 +1,7 @@
 /*
- * edgeContainer.h
+ * shortCutPolicy.cpp
  *
- *  Created on: 29.04.2013
+ *  Created on: 21.03.2014
  *      Author: cosh
  *     Purpose:
  *
@@ -24,42 +24,4 @@
 
  */
 
-#ifndef _edgeContainer_h
-#define _edgeContainer_h
-
-#include <edge.h>
-#include <pointerContainer.h>
-
-template
-<
-	class TGraphElementId,
-	class DatePolicy,
-	class TShortCut,
-	template <class TShortCut> class ShortCutPolicy,
-	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy,
-	template<class TGraphElementId, class DatePolicy, class TShortCut, class ShortCutPolicy, class TValue, class PropertyPolicy> class EdgePolicy
-> class EdgeContainer: public PointerContainer<Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy, EdgePolicy>>  {
-
-private:
-
-	/**
-	 * The edge property identifier
-	 */
-	const short _edgePropertyId;
-
-public:
-
-	/**
-	 * Creates a new edge container
-	 * @param edgePropertyId The edge property identifier
-	 */
-	explicit EdgeContainer(const short edgePropertyId);
-
-	/**
-	 * Returns the edge property identifier
-	 */
-	const short EdgePropertyId();
-};
-
-#endif
+#include "shortCutPolicy.h"

@@ -1,5 +1,5 @@
 /*
- * edgeContainer.h
+ * pointerContainer.h
  *
  *  Created on: 29.04.2013
  *      Author: cosh
@@ -24,42 +24,57 @@
 
  */
 
-#ifndef _edgeContainer_h
-#define _edgeContainer_h
-
-#include <edge.h>
-#include <pointerContainer.h>
+#ifndef _pointerContainer_h
+#define _pointerContainer_h
 
 template
 <
-	class TGraphElementId,
-	class DatePolicy,
-	class TShortCut,
-	template <class TShortCut> class ShortCutPolicy,
-	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy,
-	template<class TGraphElementId, class DatePolicy, class TShortCut, class ShortCutPolicy, class TValue, class PropertyPolicy> class EdgePolicy
-> class EdgeContainer: public PointerContainer<Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy, EdgePolicy>>  {
+	class TPointer
+>
+class PointerContainer {
 
 private:
+	/**
+	 * Max number of pointer
+	 */
+	int _maxPointerCount;
 
 	/**
-	 * The edge property identifier
+	 * Current count of edges
 	 */
-	const short _edgePropertyId;
+	int _currentCount;
+
+	/**
+	 * first pointer
+	 */
+	TPointer* _firstPointer;
+
 
 public:
 
 	/**
-	 * Creates a new edge container
-	 * @param edgePropertyId The edge property identifier
+	 * Get first pointer
+	 * @return The first pointer
 	 */
-	explicit EdgeContainer(const short edgePropertyId);
+	TPointer* GetFirstPointer();
 
 	/**
-	 * Returns the edge property identifier
+	 * Total number of pointer
+	 * @return The total number of pointer
 	 */
-	const short EdgePropertyId();
+	int Count();
+
 };
+
+template<class TPointer>
+inline TPointer* PointerContainer<TPointer>::GetFirstPointer() {
+	return _firstPointer;
+
+}
+
+template<class TPointer>
+inline int PointerContainer<TPointer>::Count() {
+	return _currentCount;
+}
 
 #endif

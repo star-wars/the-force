@@ -37,7 +37,8 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy
+	template <class TValue, class TGraphElementId> class PropertyPolicy,
+	template<class TGraphElementId, class DatePolicy, class TShortCut, class ShortCutPolicy, class TValue, class PropertyPolicy> class EdgePolicy
 > class Edge;
 
 template
@@ -60,41 +61,13 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy
+	template <class TValue, class TGraphElementId> class PropertyPolicy,
+	template<class TGraphElementId, class DatePolicy, class TShortCut, class ShortCutPolicy, class TValue, class PropertyPolicy> class EdgePolicy
 >
 class Vertex :
-		public GraphElement<TGraphElementId,DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> {
+		public GraphElement<TGraphElementId,DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy>,
+		public EdgePolicy<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy<TShortCut>, TValue, PropertyPolicy<TValue, TGraphElementId>> {
 
-typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
-typedef EdgeContainer<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdgeContainer;
-typedef Vertex<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
-
-private:
-	const MyEdgeContainer* const _inEdgeContainer;
-	const MyEdgeContainer* const _outEdgeContainer;
-
-	void AddEdge();
-	void AddOutEdge(const short edgePropertyId, MyEdge * const outEdge);
-	void AddInEdge(const short edgePropertyId, MyEdge * const inEdge);
-
-public:
-	const MyEdge* const GetAllEdges();
-	const MyEdge* const GetAllOutEdges();
-	const MyEdge* const GetAllInEdges();
-	const MyEdge* const GetOutEdges(const short edgePropertyId);
-	const MyEdge* const GetInEdges(const short edgePropertyId);
-
-	const MyVertex* const GetAllNeighbors();
-	const MyVertex* const GetAllOutNeighbors();
-	const MyVertex* const GetAllInNeighbors();
-	const MyVertex* const GetOutNeighbors(const short edgePropertyId);
-	const MyVertex* const GetInNeighbors(const short edgePropertyId);
-
-	const short* GetInEdgeIds();
-	const short* GetOutEdgeIds();
-
-	unsigned int GetOutDegree();
-	unsigned int GetInDegree();
 };
 
 #endif
