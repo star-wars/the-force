@@ -25,3 +25,19 @@
  */
 
 #include "compressedDatePolicy.h"
+
+void CompressedDatePolicy::SetModificationDate(const long long currentDate) {
+	_modificationDateDifference = currentDate - _creationDate;
+}
+
+CompressedDatePolicy::CompressedDatePolicy(const long long creationDate) :
+	_creationDate(creationDate), _modificationDateDifference(0){
+}
+
+const long long CompressedDatePolicy::GetCreationDate() {
+	return _creationDate;
+}
+
+const long long CompressedDatePolicy::GetModificationDate() {
+	return _creationDate + _modificationDateDifference;
+}
