@@ -37,9 +37,8 @@ template
 	class TShortCut,
 	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy,
-	template<class TGraphElementId, class DatePolicy, class TShortCut, class ShortCutPolicy, class TValue, class PropertyPolicy> class EdgePolicy
-> class EdgeContainer: public PointerContainer<Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy, EdgePolicy>>  {
+	template <class TValue, class TGraphElementId> class PropertyPolicy
+> class EdgeContainer: public PointerContainer<Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy>>  {
 
 private:
 

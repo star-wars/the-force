@@ -13,7 +13,6 @@ SET(GRAPHSTORE_SRC ${GRAPHSTORE_SRC}
   model/policy/compressedDatePolicy.cpp
   model/policy/shortCutPolicy.cpp
   model/policy/columnStorePropertyPolicy.cpp
-  model/policy/powerEdgePolicy.cpp
 )
 
 ADD_LIBRARY(GRAPHSTORE ${GRAPHSTORE_SRC})

@@ -1,5 +1,5 @@
 /*
- * powerEdgePolicy.cpp
+ * compressedDatePolicy.cpp
  *
  *  Created on: 27.03.2014
  *      Author: cosh
@@ -24,4 +24,4 @@
 
  */
 
-#include "powerEdgePolicy.h"
+#include "compressedDatePolicy.h"
