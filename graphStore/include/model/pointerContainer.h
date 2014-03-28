@@ -31,7 +31,7 @@ template
 <
 	class TPointer
 >
-class PointerContainer {
+struct PointerContainer {
 
 private:
 	/**

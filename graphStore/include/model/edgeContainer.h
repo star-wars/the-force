@@ -27,8 +27,8 @@
 #ifndef _edgeContainer_h
 #define _edgeContainer_h
 
-#include <edge.h>
-#include <pointerContainer.h>
+#include <model/edge.h>
+#include <model/pointerContainer.h>
 
 template
 <

@@ -27,7 +27,7 @@
 #ifndef _edge_h
 #define _edge_h
 
-#include "graphElement.h"
+#include "model/graphElement.h"
 
 //forward definitions
 template
@@ -40,6 +40,7 @@ template
 	template <class TValue, class TGraphElementId> class PropertyPolicy
 >
 class Vertex;
+
 
 /**
  * The edge template
