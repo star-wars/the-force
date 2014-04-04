@@ -1,10 +1,7 @@
 #include <assert.h>
 #include <boost/any.hpp>
-#include <model/policy/columnStorePropertyPolicy.h>
-#include <model/policy/compressedDatePolicy.h>
 #include <errno.h>
 #include <graphStore.h>
-#include <model/policy/shortCutPolicy.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,19 +27,14 @@ int main() {
 	GraphStore
 	<
 		long long,
-		CompressedDatePolicy,
-		long, ShortCutPolicy,
-		std::string,
-		ColumnStorePropertyPolicy
+		long,
+		std::string
 	>
 	*gs = new GraphStore
 	<
 		long long,
-		CompressedDatePolicy,
 		long,
-		ShortCutPolicy,
-		std::string,
-		ColumnStorePropertyPolicy
+		std::string
 	>(1000);
 
 	test_graphStore_basic_1(gs);

@@ -35,19 +35,13 @@
 /**
  * The vertex template
  */
-template<class TGraphElementId, class DatePolicy, class TShortCut, template<
-		class TShortCut> class ShortCutPolicy, class TValue, template<
-		class TValue, class TGraphElementId> class PropertyPolicy>
-class Vertex: public GraphElement<TGraphElementId, DatePolicy, TShortCut,
-		ShortCutPolicy, TValue, PropertyPolicy> {
+template<class TGraphElementId, class TValue, class TShortCut>
+class Vertex: public GraphElement<TGraphElementId, TValue, TShortCut> {
 
-	typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue,
-			PropertyPolicy> MyEdge;
-	typedef Vertex<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy,
-			TValue, PropertyPolicy> MyVertex;
+	typedef Edge<TGraphElementId, TValue, TShortCut> MyEdge;
+	typedef Vertex<TGraphElementId, TValue, TShortCut> MyVertex;
 	typedef PointerContainer<
-			EdgeContainer<TGraphElementId, DatePolicy, TShortCut,
-					ShortCutPolicy, TValue, PropertyPolicy>> MyEdgeContainerArray;
+			EdgeContainer<TGraphElementId, TValue, TShortCut>> MyEdgeContainerArray;
 
 private:
 	/**

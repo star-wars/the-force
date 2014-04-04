@@ -39,16 +39,13 @@
 template
 <
 	class TGraphElementId,
-	class DatePolicy,
-	class TShortCut,
-	template <class TShortCut> class ShortCutPolicy,
 	class TValue,
-	template <class TValue, class TGraphElementId> class PropertyPolicy
+	class TShortCut
 > class GraphStore {
 
-typedef Edge<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyEdge;
-typedef Vertex<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyVertex;
-typedef GraphElement<TGraphElementId, DatePolicy, TShortCut, ShortCutPolicy, TValue, PropertyPolicy> MyGraphElement;
+typedef Edge<TGraphElementId, TValue, TShortCut> MyEdge;
+typedef Vertex<TGraphElementId, TValue, TShortCut> MyVertex;
+typedef GraphElement<TGraphElementId, TValue, TShortCut> MyGraphElement;
 
 private:
 
