@@ -25,7 +25,7 @@ TEST(test_graphStore_basic_2) {
 TEST(test_graphStore_graphElement_size) {
 
 	assert(sizeof(Vertex<long, long, long>) > sizeof(Vertex<short, short, short>));
-	assert(sizeof(Vertex<long, long, long>) > sizeof(Vertex<short, short, short>));
+	assert(sizeof(Edge<long, long, long>) > sizeof(Edge<short, short, short>));
 
 	return 0;
 }
