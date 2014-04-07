@@ -15,13 +15,19 @@ INCLUDE(InstallRequiredSystemLibraries)
 ENABLE_TESTING()
 
 ### C++11 + threading
-list(APPEND CMAKE_CXX_FLAGS "-pthread -std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs -Wall")
+list(APPEND CMAKE_CXX_FLAGS "-pthread -std=c++0x ${CMAKE_CXX_FLAGS}")
+
+### Debug config
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -ftest-coverage -fprofile-arcs -Wall")
+
+### Release config
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
 
 SET(CPACK_PACKAGE_VERSION_MAJOR "0")
 SET(CPACK_PACKAGE_VERSION_MINOR "2")
 SET(CPACK_PACKAGE_VERSION_PATCH "0")
 SET(CPACK_PACKAGE_VENDOR "Henning Rauch")
-SET(CPACK_RESOURCE_FILE_LICENSE LICENSE.txt)
+SET(CPACK_RESOURCE_FILE_LICENSE ${THE-FORCE_SOURCE_DIR}/LICENSE.txt)
 
 IF(CPack_CMake_INCLUDED)
 ELSE(CPack_CMake_INCLUDED)
