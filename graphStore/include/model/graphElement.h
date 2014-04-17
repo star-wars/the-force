@@ -63,6 +63,30 @@ private:
 	unsigned int _modificationDateDifference;
 
 protected:
+	/**
+	 * Sets the modification date
+	 * @param currentDate The current date as utc timestamp
+	 */
+	void SetModificationDate(const long long currentDate);
+
+	/**
+	 * Creates a new graph element
+	 * @param id The graph element identifier
+	 * @param propertyStore The property store
+	 * @param shortCut the short cut
+	 * @param creationDate The creation date
+	 */
+	explicit GraphElement(const TGraphElementId id,
+			const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+			TShortCut shortCut, const long long creationDate);
+
+public:
+
+	/**
+	 * Sets the shortcut
+	 * @param shortCut The shortcut
+	 */
+	void SetShortCut(const TShortCut shortCut);
 
 	/**
 	 * Add a property to the graph element
@@ -78,32 +102,6 @@ protected:
 	 * @param propertyId The unique identifier of the property
 	 */
 	const void RemoveProperty(const unsigned short propertyId);
-
-	/**
-	 * Sets the modification date
-	 * @param currentDate The current date as utc timestamp
-	 */
-	void SetModificationDate(const long long currentDate);
-
-	/**
-	 * Sets the shortcut
-	 * @param shortCut The shortcut
-	 */
-	void SetShortCut(const TShortCut shortCut);
-
-	/**
-	 * Creates a new graph element
-	 * @param id The graph element identifier
-	 * @param propertyStore The property store
-	 * @param shortCut the short cut
-	 * @param creationDate The creation date
-	 */
-	explicit GraphElement(const TGraphElementId id,
-			const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
-			TShortCut shortCut,
-			const long long creationDate);
-
-public:
 
 	/**
 	 * Gets a property
@@ -153,9 +151,9 @@ template<class TGraphElementId, class TValue, class TShortCut>
 inline GraphElement<TGraphElementId, TValue, TShortCut>::GraphElement(
 		const TGraphElementId id,
 		const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
-		TShortCut shortCut,
-		const long long creationDate) :
-		_id(id), _ps(propertyStore), _shortCut(shortCut), _creationDate(creationDate), _modificationDateDifference(0) {
+		TShortCut shortCut, const long long creationDate) :
+		_id(id), _ps(propertyStore), _shortCut(shortCut), _creationDate(
+				creationDate), _modificationDateDifference(0) {
 }
 
 template<class TGraphElementId, class TValue, class TShortCut>

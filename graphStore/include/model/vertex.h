@@ -43,6 +43,8 @@ class Vertex: public GraphElement<TGraphElementId, TValue, TShortCut> {
 	typedef Vertex<TGraphElementId, TValue, TShortCut> MyVertex;
 	typedef PointerContainer<EdgeContainer<TGraphElementId, TValue, TShortCut>> MyEdgeContainerArray;
 
+friend class GraphStore;
+
 private:
 	/**
 	 * The container for incoming edges
@@ -53,6 +55,19 @@ private:
 	 * The container for outgoing edges
 	 */
 	MyEdgeContainerArray* const _outEdgeContainer;
+
+	/**
+	 *
+	 * @param id
+	 * @param propertyStore
+	 * @param shortCut
+	 * @param creationDate
+	 * @param outEdges
+	 * @param inEdges
+	 */
+	explicit Vertex(const TGraphElementId id,
+				const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+				TShortCut shortCut, const long long creationDate, MyEdgeContainerArray* const outEdges, MyEdgeContainerArray* const inEdges);
 
 public:
 
