@@ -43,7 +43,10 @@ class Vertex: public GraphElement<TGraphElementId, TValue, TShortCut> {
 	typedef Vertex<TGraphElementId, TValue, TShortCut> MyVertex;
 	typedef PointerContainer<EdgeContainer<TGraphElementId, TValue, TShortCut>> MyEdgeContainerArray;
 
-friend class GraphStore;
+	/**
+	 * The graph store should be able to access private methods
+	 */
+	friend class GraphStore;
 
 private:
 	/**
@@ -57,17 +60,24 @@ private:
 	MyEdgeContainerArray* const _outEdgeContainer;
 
 	/**
-	 *
-	 * @param id
-	 * @param propertyStore
-	 * @param shortCut
-	 * @param creationDate
-	 * @param outEdges
-	 * @param inEdges
+	 * Creates a new vertex object
+	 * @param id The graph element identifier
+	 * @param propertyStore the property store
+	 * @param shortCut The shortcut
+	 * @param creationDate The creation date
+	 * @param outEdges The outgoing edges
+	 * @param inEdges The incoming edges
 	 */
 	explicit Vertex(const TGraphElementId id,
-				const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
-				TShortCut shortCut, const long long creationDate, MyEdgeContainerArray* const outEdges, MyEdgeContainerArray* const inEdges);
+			const MetaManager<TGraphElementId, TValue, TShortCut>* const metaManager,
+			TShortCut shortCut, const long long creationDate,
+			MyEdgeContainerArray* const outEdges,
+			MyEdgeContainerArray* const inEdges) :
+			GraphElement<TGraphElementId, TValue, TShortCut>(id, metaManager,
+					shortCut), _inEdgeContainer(inEdges), _outEdgeContainer(
+					outEdges) {
+
+	}
 
 public:
 

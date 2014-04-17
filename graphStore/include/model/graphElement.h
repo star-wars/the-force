@@ -27,7 +27,7 @@
 #ifndef _graphElement_h
 #define _graphElement_h
 
-#include "propertyStore.h"
+#include "../manager/metaManager.h"
 
 /**
  * The class that hosts the attributes and functions that are used by any graph element
@@ -45,7 +45,7 @@ private:
 	/**
 	 * The property store
 	 */
-	const PropertyStore<TValue, long long, unsigned short>* const _ps;
+	const MetaManager<TGraphElementId, TValue, TShortCut>* const _metaManager;
 
 	/**
 	 * The shortcut is a fast lookup property
@@ -72,12 +72,12 @@ protected:
 	/**
 	 * Creates a new graph element
 	 * @param id The graph element identifier
-	 * @param propertyStore The property store
+	 * @param metaManager The meta manager
 	 * @param shortCut the short cut
 	 * @param creationDate The creation date
 	 */
 	explicit GraphElement(const TGraphElementId id,
-			const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+			const MetaManager<TGraphElementId, TValue, TShortCut>* const metaManager,
 			TShortCut shortCut, const long long creationDate);
 
 public:
@@ -138,21 +138,21 @@ template<class TGraphElementId, class TValue, class TShortCut>
 inline void GraphElement<TGraphElementId, TValue, TShortCut>::AddProperty(
 		const unsigned short propertyId, TValue* const value,
 		const unsigned int ttl) {
-	_ps->InsertOrUpdate(_id, propertyId, value, ttl);
+	_metaManager->GetPropertyStore()->InsertOrUpdate(_id, propertyId, value, ttl);
 }
 
 template<class TGraphElementId, class TValue, class TShortCut>
 inline const void GraphElement<TGraphElementId, TValue, TShortCut>::RemoveProperty(
 		const unsigned short propertyId) {
-	_ps->Tombstone(_id, propertyId);
+	_metaManager->GetPropertyStore()->Tombstone(_id, propertyId);
 }
 
 template<class TGraphElementId, class TValue, class TShortCut>
 inline GraphElement<TGraphElementId, TValue, TShortCut>::GraphElement(
 		const TGraphElementId id,
-		const PropertyStore<TValue, long long, unsigned short>* const propertyStore,
+		const MetaManager<TGraphElementId, TValue, TShortCut>* const metaManager,
 		TShortCut shortCut, const long long creationDate) :
-		_id(id), _ps(propertyStore), _shortCut(shortCut), _creationDate(
+		_id(id), _metaManager(metaManager), _shortCut(shortCut), _creationDate(
 				creationDate), _modificationDateDifference(0) {
 }
 
@@ -161,7 +161,7 @@ inline const TValue* const GraphElement<TGraphElementId, TValue, TShortCut>::Get
 		const unsigned short propertyId) {
 
 	TValue* value;
-	_ps->TryGet(_id, propertyId, value);
+	_metaManager->GetPropertyStore()->TryGet(_id, propertyId, value);
 
 	return value;
 }

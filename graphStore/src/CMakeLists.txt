@@ -5,6 +5,7 @@ INCLUDE_DIRECTORIES(../include/manager/)
 SET(GRAPHSTORE_SRC ${GRAPHSTORE_SRC}
   graphStore.cpp
   manager/transactionManager.cpp
+  manager/metaManager.cpp
   model/graphElement.cpp
   model/edge.cpp
   model/vertex.cpp
