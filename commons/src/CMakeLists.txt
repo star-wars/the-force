@@ -1,7 +1,6 @@
 INCLUDE_DIRECTORIES(../include/)
 
 SET(COMMONS_SRC ${COMMONS_SRC}
-  synchronization/lockableElement.cpp
   memory/arrayAllocator.cpp
   memory/arrayMetaData.cpp
   memory/arrayObject.cpp
