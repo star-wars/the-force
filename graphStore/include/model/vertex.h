@@ -110,38 +110,65 @@ public:
 	void AddInEdge(const short edgePropertyId, MyVertex * const inEdge);
 
 	/**
-	 * Get all edges
-	 * @return The edges
-	 */
-	const PointerContainer<MyEdge>* const GetAllEdges();
-
-	/**
 	 *Get all outgoing edges
 	 * @return The edges
 	 */
-	const PointerContainer<MyEdge>* const GetAllOutEdges();
+	const PointerContainer<MyEdge>* const GetAllOutEdges() {
+		return _outEdgeContainer;
+	}
 
 	/**
 	 * Get all incoming edges
 	 * @return all incoming edges
 	 */
-	const PointerContainer<MyEdge>* const GetAllInEdges();
+	const PointerContainer<MyEdge>* const GetAllInEdges() {
+		return _inEdgeContainer;
+	}
 
 	/**
 	 * Get outgoing edges
 	 * @param edgePropertyId The edge property identifier
-	 * @return Outgoing edges of a given edge property identifier
+	 * @param edgePropertyId The out parameter
+	 * @return True if the edge property has been found
 	 */
-	const PointerContainer<MyEdge>* const GetOutEdges(
-			const short edgePropertyId);
+	const bool TryGetOutEdges(const short edgePropertyId,
+			const PointerContainer<MyEdge>* const outParam) {
+
+		const EdgeContainer<TGraphElementId, TValue, TShortCut>* const currentElement =
+				_outEdgeContainer->GetFirstPointer();
+
+		for (int i = 0; i < _outEdgeContainer->Count(); i++) {
+			currentElement += i;
+			if (currentElement->GetEdgePropertyId() == edgePropertyId) {
+				outParam = currentElement;
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get incoming edges
 	 * @param edgePropertyId The edge property identifier
-	 * @return Incoming edges of a given edge property identifier
+	 * @param edgePropertyId The out parameter
+	 * @return True if the edge property has been found
 	 */
-	const PointerContainer<MyEdge>* const GetInEdges(
-			const short edgePropertyId);
+	const bool GetInEdges(const short edgePropertyId,
+			const PointerContainer<MyEdge>* const outParam) {
+		const EdgeContainer<TGraphElementId, TValue, TShortCut>* const currentElement =
+				_inEdgeContainer->GetFirstPointer();
+
+		for (int i = 0; i < _inEdgeContainer->Count(); i++) {
+			currentElement += i;
+			if (currentElement->GetEdgePropertyId() == edgePropertyId) {
+				outParam = currentElement;
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get all neighbors

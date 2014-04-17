@@ -55,7 +55,7 @@ public:
 	/**
 	 * Returns the edge property identifier
 	 */
-	const short EdgePropertyId();
+	const short GetEdgePropertyId();
 };
 
 #endif
