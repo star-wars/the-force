@@ -31,6 +31,7 @@
 #include "model/pointerContainer.h"
 #include "model/edgeContainer.h"
 #include "model/edge.h"
+#include <vector>
 
 /**
  * The vertex template
@@ -40,8 +41,7 @@ class Vertex: public GraphElement<TGraphElementId, TValue, TShortCut> {
 
 	typedef Edge<TGraphElementId, TValue, TShortCut> MyEdge;
 	typedef Vertex<TGraphElementId, TValue, TShortCut> MyVertex;
-	typedef PointerContainer<
-			EdgeContainer<TGraphElementId, TValue, TShortCut>> MyEdgeContainerArray;
+	typedef PointerContainer<EdgeContainer<TGraphElementId, TValue, TShortCut>> MyEdgeContainerArray;
 
 private:
 	/**
@@ -53,6 +53,8 @@ private:
 	 * The container for outgoing edges
 	 */
 	MyEdgeContainerArray* const _outEdgeContainer;
+
+public:
 
 	/**
 	 * Adds an outgoing edge
@@ -68,7 +70,20 @@ private:
 	 */
 	void AddInEdge(const short edgePropertyId, MyEdge * const inEdge);
 
-public:
+	/**
+	 * Adds an outgoing edge
+	 * @param edgePropertyId The edge property identifier
+	 * @param outEdge The outgoing edge
+	 */
+	void AddOutEdge(const short edgePropertyId, MyVertex * const outEdge);
+
+	/**
+	 * Adds an incoming edge
+	 * @param edgePropertyId The edge property identifier
+	 * @param inEdge The incoming edge
+	 */
+	void AddInEdge(const short edgePropertyId, MyVertex * const inEdge);
+
 	/**
 	 * Get all edges
 	 * @return The edges
@@ -82,27 +97,83 @@ public:
 	const PointerContainer<MyEdge>* const GetAllOutEdges();
 
 	/**
-	 *
-	 * @return
+	 * Get all incoming edges
+	 * @return all incoming edges
 	 */
 	const PointerContainer<MyEdge>* const GetAllInEdges();
+
+	/**
+	 * Get outgoing edges
+	 * @param edgePropertyId The edge property identifier
+	 * @return Outgoing edges of a given edge property identifier
+	 */
 	const PointerContainer<MyEdge>* const GetOutEdges(
 			const short edgePropertyId);
+
+	/**
+	 * Get incoming edges
+	 * @param edgePropertyId The edge property identifier
+	 * @return Incoming edges of a given edge property identifier
+	 */
 	const PointerContainer<MyEdge>* const GetInEdges(
 			const short edgePropertyId);
 
+	/**
+	 * Get all neighbors
+	 * @return All neighbors
+	 */
 	const PointerContainer<MyVertex>* const GetAllNeighbors();
+
+	/**
+	 * Get all neighbors of outgoing edges
+	 * @return Neighbors
+	 */
 	const PointerContainer<MyVertex>* const GetAllOutNeighbors();
+
+	/**
+	 * Get all neighbors of incoming edges
+	 * @return Neighbors
+	 */
 	const PointerContainer<MyVertex>* const GetAllInNeighbors();
+
+	/**
+	 * Get neighbors from outgoing edges
+	 * @param edgePropertyId The edge property identifier
+	 * @return Neighbors from outgoing edges of a given edge property identifier
+	 */
 	const PointerContainer<MyVertex>* const GetOutNeighbors(
 			const short edgePropertyId);
+
+	/**
+	 * Get neighbors from incoming edges
+	 * @param edgePropertyId The edge property identifier
+	 * @return Neighbors from incoming edges of a given edge property identifier
+	 */
 	const PointerContainer<MyVertex>* const GetInNeighbors(
 			const short edgePropertyId);
 
-	const short* GetInEdgeIds();
-	const short* GetOutEdgeIds();
+	/**
+	 * Get incoming edge identifier
+	 * @return Incoming edge identifier
+	 */
+	const std::vector<short> GetInEdgeIds();
 
+	/**
+	 * Get outgoing edge identifier
+	 * @return outgoing edge identifier
+	 */
+	const std::vector<short> GetOutEdgeIds();
+
+	/**
+	 * Get the out-degree
+	 * @return Out-degree
+	 */
 	unsigned int GetOutDegree();
+
+	/**
+	 * Get the in-degree
+	 * @return The in-degree
+	 */
 	unsigned int GetInDegree();
 
 };
